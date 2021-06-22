@@ -8,7 +8,7 @@ Here is a list of steps we are going through this demo:
 - [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
 
 ---
-Check out the complete server code [here](./server/server.js) and client code [here](./client/src/).
+Check out the complete server code [here](./server/server.js) and client code [here](./client/).
 ---
 # Setting up The Server
 - Create a `server` directory using the command:
