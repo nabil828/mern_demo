@@ -437,7 +437,8 @@ app.delete("/delete/:city_name", function(req, res){
 ```
 , we will use a tool called [[Postman]](https://www.postman.com/) to simulate these requests. In the following gif, I am inserting a new city and deleting it using the API.
 ![insert delete](images/3.gif)
-
+Check the status of the [code](https://github.com/nabil828/mern_demo/tree/b24a6704d141f6c7fb72dd03f5efee3e58f6e133) at this stage.
+---
 # React
 Now our server is ready to serve but what about our client. so far we had been testing the server by mostly entering the routes dirctly in the browser for GET requests and using Postman for the rest.
 
@@ -451,3 +452,351 @@ npx create-react-app client
 cd client
 npm start
 ```
+It took me around 4 minutes and here is what I got from running it:
+
+```
+nabil828@DESKTOP-0AB0QNR:~/mern_demo$ ls client/
+nabil828@DESKTOP-0AB0QNR:~/mern_demo$ npx create-react-app client
+npx: installed 67 in 4.035s
+
+Creating a new React app in /home/nabil828/mern_demo/client.
+
+Installing packages. This might take a couple of minutes.
+Installing react, react-dom, and react-scripts with cra-template...
+
+
+> core-js@2.6.12 postinstall /home/nabil828/mern_demo/client/node_modules/babel-runtime/node_modules/core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+
+> core-js@3.15.0 postinstall /home/nabil828/mern_demo/client/node_modules/core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+
+> core-js-pure@3.15.0 postinstall /home/nabil828/mern_demo/client/node_modules/core-js-pure
+> node -e "try{require('./postinstall')}catch(e){}"
+
+
+> ejs@2.7.4 postinstall /home/nabil828/mern_demo/client/node_modules/ejs
+> node ./postinstall.js
+
++ cra-template@1.1.2
++ react-scripts@4.0.3
++ react-dom@17.0.2
++ react@17.0.2
+added 1897 packages from 703 contributors and audited 1900 packages in 87.361s
+
+145 packages are looking for funding
+  run `npm fund` for details
+
+found 7 vulnerabilities (3 moderate, 4 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+Installing template dependencies using npm...
+npm WARN @babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@7.14.5 requires a peer of @babel/core@^7.13.0 but none is installed. You must install peer dependencies yourself.
+npm WARN tsutils@3.21.0 requires a peer of typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules/watchpack-chokidar2/node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules/webpack-dev-server/node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
++ web-vitals@1.1.2
++ @testing-library/jest-dom@5.14.1
++ @testing-library/user-event@12.8.3
++ @testing-library/react@11.2.7
+added 29 packages from 78 contributors and audited 1929 packages in 11.566s
+
+145 packages are looking for funding
+  run `npm fund` for details
+
+found 7 vulnerabilities (3 moderate, 4 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+Removing template package using npm...
+
+npm WARN @babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@7.14.5 requires a peer of @babel/core@^7.13.0 but none is installed. You must install peer dependencies yourself.
+npm WARN tsutils@3.21.0 requires a peer of typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules/webpack-dev-server/node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules/watchpack-chokidar2/node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
+removed 1 package and audited 1928 packages in 8.664s
+
+145 packages are looking for funding
+  run `npm fund` for details
+
+found 7 vulnerabilities (3 moderate, 4 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+Success! Created client at /home/nabil828/mern_demo/client
+Inside that directory, you can run several commands:
+
+  npm start
+    Starts the development server.
+
+  npm run build
+    Bundles the app into static files for production.
+
+  npm test
+    Starts the test runner.
+
+  npm run eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
+
+We suggest that you begin by typing:
+
+  cd client
+  npm start
+
+Happy hacking!
+nabil828@DESKTOP-0AB0QNR:~/mern_demo$ cd client/
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ l
+README.md  node_modules/  package-lock.json  package.json  public/  src/
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ ls
+README.md  node_modules  package-lock.json  package.json  public  src
+```
+
+Notice the new files added by the `npx` command and how it suggests to use `npm start` to start the client.
+
+- Before we move forward, check out the tree structure of the automatically created files:
+
+```
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ tree . -L 1
+.
+├── README.md
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+└── src
+
+3 directories, 3 files
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ tree ./src -L 1
+./src
+├── App.css
+├── App.js
+├── App.test.js
+├── index.css
+├── index.js
+├── logo.svg
+├── reportWebVitals.js
+└── setupTests.js
+
+0 directories, 8 files
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ tree ./public -L 1
+./public
+├── favicon.ico
+├── index.html
+├── logo192.png
+├── logo512.png
+├── manifest.json
+└── robots.txt
+
+0 directories, 6 files
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$
+```
+All the magic start with index.js in the `src` directory. I will open the `client` in atom and delete all the files except `index.js` and `index.html`:
+
+```
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ ls
+README.md  node_modules  package-lock.json  package.json  public  src
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ cd public/
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client/public$ ls
+favicon.ico  index.html  logo192.png  logo512.png  manifest.json  robots.txt
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client/public$ rm favicon.ico
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client/public$ rm logo*
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client/public$ ls
+index.html  manifest.json  robots.txt
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client/public$ rm robots.txt
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client/public$ rm manifest.json
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client/public$ ls
+index.html
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client/public$ cd ..
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ cd ..
+nabil828@DESKTOP-0AB0QNR:~/mern_demo$ tree ./public -L 1
+./public [error opening dir]
+
+0 directories, 0 files
+nabil828@DESKTOP-0AB0QNR:~/mern_demo$ tree ./public
+./public [error opening dir]
+
+0 directories, 0 files
+nabil828@DESKTOP-0AB0QNR:~/mern_demo$ cd client/
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ tree ./public -L 1
+./public
+└── index.html
+
+0 directories, 1 file
+nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ tree ./src -L 1
+./src
+└── index.js
+
+0 directories, 1 file
+```
+
+Alright, so we are left with `src/index.js`& `public/index.html`
+
+- Next, I will clean `index.js` to have only the following lines:
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+
+ReactDOM.render(
+    <App />
+    ,
+    document.getElementById('root')
+);
+```
+
+In this snippet of code, we are calling `ReactDOM.render` which takes two arguments; what to render and where to render.
+For example, if we had:
+
+```
+ReactDOM.render(
+    <ol>
+      <li> Apple </li>
+      <li> Orange </li>
+    </ol>
+    ,
+    document.getElementById('root')
+);
+```
+Then we will be rendering an ordered list inside a an HTML element with an ID equal to `root`. If you check `public/index.html`, you will see that it is a dive element inside the body html element:
+
+```
+  <div id="root"></div>
+```
+So that is it. We now have a simple, clean, & working React client:
+![react client](images/15.jpg)
+
+- Now I want to show you the final state of my code and go over it in more details.
+
+- Create `App.js` file and have this code copied inside it:
+
+```
+import Heading from "./Heading.js"
+// import Rest from "./Rest.js"
+import {Route,Switch, Link} from "react-router-dom"
+import './App.css';
+import {useState, useEffect} from 'react'
+
+
+function Card(props){
+  const [city, setCity] = useState(null);
+  console.log("props.name" + props.name);
+  useEffect( () => {
+    fetch("/cities/" + props.name)
+    .then(response => response.json())
+    .then(data => setCity(data[0]))
+  },[props.name]
+  )
+
+
+  console.log(city);
+      if(city){
+        return (
+          <>
+            <h1> {city.name} </h1>
+            <ul>
+              <li> Temperature: {city.temperature}</li>
+              <li> Description: {city.description}</li>
+            </ul>
+          </>
+        );
+      }else
+      return <h1> No User</h1>
+
+}
+function App() {
+  return (
+    <div>
+      <Heading/>
+
+      Select a city:
+      <ul>
+        <li><Link to="/Vancouver"> Vancouver </Link> </li>
+        <li><Link to="/Tokyo"> Tokyo </Link> </li>
+      </ul>
+
+        <Switch>
+        <Route
+          path="/Vancouver"
+          render={(props) => (
+             <Card name='Vancouver' temperature="25.6" description="sunny"/>
+           )}
+        />
+        <Route
+          path="/Tokyo"
+          render={(props) => (
+             <Card name='Tokyo' temperature="30.6" description="scorching"/>
+           )}
+        />
+
+      </Switch>
+    </div>
+
+  );
+}
+export default App;
+```
+And modify `index.js` to match the following:
+```
+import App from "./App.js";
+import {BrowserRouter} from 'react-router-dom';
+
+var React = require('react');
+var ReactDom = require("react-dom");
+
+
+ReactDom.render(
+  <BrowserRouter>
+  <App/>
+  </BrowserRouter>
+  , document.getElementById("root"));
+```
+And that is it!
+Let us break this code down:
+ - First, notice in `index.js` how we surrounded the `App` tag with `BrwoserRouter` tag.
+ `BrwoserRouter` indicates that you plan to use react routes in your client. This will allow us, for example
+ to select and load the weather for different cities.
+ - As for the `App` tag it self, notice how the letter A is capital. This is not an HTML tag. It is a special React.js tag
+ called a *component*. Think about the user interface (UI) as a group of independent components.
+ - Now we choose to write the code of the `App` component in a separate file but it is not a must.
+ - In the `App.js` file we have two functions
+  - `App()` is the function that gonna return the HTML code the that would replace the `App` tag. We can that first we build a simple navigation list with a special tag called `Link` instead of the usual `a` in HTML. This `Link` tag will allow us to make AJAX requests
+  to the server.
+
+  ```
+  Select a city:
+  <ul>
+    <li><Link to="/Vancouver"> Vancouver </Link> </li>
+    <li><Link to="/Tokyo"> Tokyo </Link> </li>
+  </ul>
+  ```
+  Next, we have the
+
+  ```
+  <Switch>
+  <Route>
+  ```
+  code which will handle client routes to the paths `/Vancouver` & `/Tokyo` by *again* calling another component named `Card` and passing the city names using an argument called `props`.
+
+  - `Card()` is the function that will return the HTML of the `Card` component. Here we want to list the city name, temperature, and description of the city's weather.
+    - First, we are using [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to construct an HTTP get request to our server and pass the city name that we are interested in. You may use it for any other REST request like POST, PUT, or DELETE.
+    - Second, we are using `useState` Hook to pass the response from the server to the HTML code (Aka maintaining state).
+    - Third, we use `useEffect` Hook is used to execute functions after a component gets rendered to “perform side effects”.
+     Here, to `fetch` the server every time the user call the `Card` component passing different `props` argument [TL;DR](https://stackoverflow.com/a/55481525/2452907).  
+
+Mmm.. and that is it I guess. Please let me know if you have any question!
+
+
+Thx,
+Nabil
