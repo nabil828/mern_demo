@@ -242,7 +242,7 @@ app.post("/", function(req, res) {
 
 
 ```
-Notice how we are sending now `index.html` file back to the browser client whenever to send a GET for the root directory of our web server. Here is the content of `index.html`:
+Notice how we are sending now `index.html` file back to the browser client whenever it sends a GET for the root directory of our web server. Here is the content of `index.html`:
 
 ```
 <!DOCTYPE html>
@@ -269,7 +269,7 @@ Notice how we are sending now `index.html` file back to the browser client whene
 Also, notice that we are using now `res.sendFile()` instead of `res.send()` to send a whole html file. In `index.html`, we have built a simple form for the user to enter the city of interest.
 Once the user hit button, a POST request will be send to our server and will be caught by `app.post('/')`. Again, the argument `/` indicates that the POST request was originated from the root/home page.
 
-- Next, we need to parse the POST request using `body-parser` module. It allows use to use the property `req.body` to get the entered city name.
+- Next, we need to parse the POST request using `body-parser` module. It allows us to use the property `req.body` to get the entered city name.
 copy the next lines at the begining of `server.js`:
 ```
 const bodyparser = require("body-parser");
@@ -279,7 +279,7 @@ app.use(bodyparser.urlencoded({
 ```
 check out [[https://www.npmjs.com/package/body-parser]](https://www.npmjs.com/package/body-parser) for full documentation of this module/middleware.
 
-- Finally, add the api key from your openweathermap account page.
+- Finally, add the API key from your openweathermap account page.
 ```
 const apikey = "b660f3402c54cb9a9c48f89c35249e5c";
 ```
@@ -293,7 +293,7 @@ run `http://localhost:5000` on your server and Voila!
 - [ ] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
 - [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
 
-# MongoDB and REST API - Round two
+# MongoDB and REST API - Round Two
 Before talking about the other REST operations, namely PUT and DELETE, let us build a database on our server to serve such requests. Now, we want to build our own weather service and not make any calls to openwathermap.
 
 - First, let us install mongodb using our terminal
@@ -360,7 +360,7 @@ const citySchema = new mongoose.Schema({
 });
 const cityModel = mongoose.model("cities", citySchema);
 ```
-The `mongoose.connect` function call will establish the connection to the db. The `citySchema` variabale should match the schema of your collection in the mongodb. The `cityModel` object is going to be used to help us to pass SQL queries to the db.
+The `mongoose.connect` function call will establish the connection to the db. The `citySchema` variabale should match the schema of your collection in the mongodb. The `cityModel` object is going to be used to help us to mimic passing SQL queries to the db.
 
 - Now moving to the fun part. Let us add these *routes* in the server code to match, a GET(retrieve all), GET(retrieve one), POST(insert one), PUT(update one), & DELETE(delete all/one) requests.  
 
@@ -467,7 +467,7 @@ Check the status of the [code](https://github.com/nabil828/mern_demo/tree/b24a67
 - [x] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
 - [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
 
-# React and REST API - Round three
+# React and REST API - Round Three
 Now our server is ready to serve but what about our client. so far we had been testing the server by mostly entering the routes dirctly in the browser for GET requests and using Postman for the rest.
 
 We will create a complete client interface using [React.js](https://reactjs.org/) to get somewhat the following:
