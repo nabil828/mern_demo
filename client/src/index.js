@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App.js'
+
+import {BrowserRouter} from 'react-router-dom';
+
 
 ReactDOM.render(
-    <ol>
-    <li> Apple </li>
-    <li> Orange </li>
-    </ol>
+    <BrowserRouter>
+    <App/>
+    </BrowserRouter>
     ,
     document.getElementById('root')
 );
