@@ -1,10 +1,10 @@
 VoilàMERN Demo using (MongoDB, Express.js, React.js, and Node.js)
 Here is a list of steps we are going through this demo:
-- [ ] Setting up the server
-- [ ] Routing in Express
-- [ ] REST API - Round one
-- [ ] Mongo DB & REST API - Round two
-- [ ] React & REST aPI - Round three
+- [ ] [Setting up the server](#Setting-up-the-server)
+- [ ] [Routing in Express](#Routing-in-Express)
+- [ ] [REST API - Round one](#REST-API---Round-one)
+- [ ] [Mongo DB & REST API - Round two](#Mongo-DB-&-REST-API---Round-two)
+- [ ] [React & REST API - Round three](#React-&-REST-API---Round-three)
 
 ---
 
@@ -111,7 +111,7 @@ app.get('/contact', function (req, res) {
 Output:
 ![server replying to another route](images/3.jpg)  
 
-# REST API
+# REST API - Round one
 > [[Source]](https://rapidapi.com/blog/most-popular-api/) API stands for Application Programming Interface and allows your application to interact with an external service using a simple set of commands.
 
 out of 10,000 APIs out there in the wild, we will be interacting with the [[openweathermap]](https://openweathermap.org/api) API to get weather and weather forecasts for multiple cities. Our Express server will act as client in this interaction.
@@ -169,7 +169,7 @@ Here is the formatted JSON reply from the API server([[Using pretty-json package
 }
 ```
 ## GET request from our server to external server & Parsing the JSON response
-With the help [[HTTPS module]](https://nodejs.org/api/https.html#https_https_get_url_options_callback) in node js make a get request to this api to get Vancouver weather.
+With the help [[HTTPS module]](https://nodejs.org/api/https.html#https_https_get_url_options_callback) in node js make a get request to this API to get Vancouver weather.
 
 ```
 app.get("/", function(req, res) {
@@ -270,7 +270,7 @@ const apikey = "b660f3402c54cb9a9c48f89c35249e5c";
 ```
 run `http://localhost:5000` on your server and Voila!
 [Check out the code at this stage](https://github.com/nabil828/mern_demo/tree/e67c18b706c68bb03b9ded771ae29549836ff882) .
-
+---
 # Mongo DB
 Before talking about the other REST operations, namely PUT and DELETE, let us build a database on our server to serve such requests. Now, we want to build our own weather service and not make any calls to openwathermap.
 
@@ -439,7 +439,7 @@ app.delete("/delete/:city_name", function(req, res){
 ![insert delete](images/3.gif)
 Check the status of the [code](https://github.com/nabil828/mern_demo/tree/b24a6704d141f6c7fb72dd03f5efee3e58f6e133) at this stage.
 ---
-# React
+# React & REST API - Round three
 Now our server is ready to serve but what about our client. so far we had been testing the server by mostly entering the routes dirctly in the browser for GET requests and using Postman for the rest.
 
 We will create a complete client interface using [React.js](https://reactjs.org/) to get somewhat the following:
@@ -765,7 +765,7 @@ ReactDom.render(
 And that is it!
 Let us break this code down:
  - First, notice in `index.js` how we surrounded the `App` tag with `BrwoserRouter` tag.
- `BrwoserRouter` indicates that you plan to use react routes in your client. This will allow us, for example
+ `BrwoserRouter` indicates that you plan to use react routes in your client. Check [react-router-dom](https://reactrouter.com/web/guides/quick-start) and install it in the `client` directory. This will allow us, for example
  to select and load the weather for different cities.
  - As for the `App` tag it self, notice how the letter A is capital. This is not an HTML tag. It is a special React.js tag
  called a *component*. Think about the user interface (UI) as a group of independent components.
@@ -791,6 +791,7 @@ Let us break this code down:
 
   - `Card()` is the function that will return the HTML of the `Card` component. Here we want to list the city name, temperature, and description of the city's weather.
     - First, we are using [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to construct an HTTP get request to our server and pass the city name that we are interested in. You may use it for any other REST request like POST, PUT, or DELETE.
+    - If you are asking your self: how would the `fetch()` method find the IP address and the port number of the server, then you are asking the right question. Because it can not with us directing it to it by add this line the `package.json` file just before the dependencies `"proxy" : "http://localhost:5000/",`
     - Second, we are using `useState` Hook to pass the response from the server to the HTML code (Aka maintaining state).
     - Third, we use `useEffect` Hook is used to execute functions after a component gets rendered to “perform side effects”.
      Here, to `fetch` the server every time the user call the `Card` component passing different `props` argument [TL;DR](https://stackoverflow.com/a/55481525/2452907).  
@@ -799,4 +800,5 @@ Mmm.. and that is it I guess. Please let me know if you have any question!
 
 
 Thx,
+<br/>
 Nabil
