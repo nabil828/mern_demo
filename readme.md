@@ -271,7 +271,7 @@ const apikey = "b660f3402c54cb9a9c48f89c35249e5c";
 run `http://localhost:5000` on your server and Voila!
 [Check out the code at this stage](https://github.com/nabil828/mern_demo/tree/e67c18b706c68bb03b9ded771ae29549836ff882) .
 ---
-# Mongo DB and REST API - Round two
+# MongoDB and REST API - Round two
 Before talking about the other REST operations, namely PUT and DELETE, let us build a database on our server to serve such requests. Now, we want to build our own weather service and not make any calls to openwathermap.
 
 - First, let us install mongodb using our terminal
