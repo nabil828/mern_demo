@@ -172,21 +172,87 @@ Here is the formatted JSON reply from the API server([[Using pretty-json package
   "cod": 200
 }
 ```
-- With the help [[HTTPS module]](https://nodejs.org/api/https.html#https_https_get_url_options_callback) in node js make a get request to this api.
+## GET request from our server to external server & Parsing the JSON response
+With the help [[HTTPS module]](https://nodejs.org/api/https.html#https_https_get_url_options_callback) in node js make a get request to this api to get Vancouver weather.
 
 ```
-const url = "https://api.openweathermap.org/data/2.5/weather?q=" + req.body.cityName + "&units=metric&appid=" + apikey
+app.get("/", function(req, res) {
+  var cityName = 'Vancouver';
+  var apikey = "b660f3402c54cb9a9c48f89c35249e5c"
+  const url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + apikey
 
-https.get(url, function(https_res) {
-  https_res.on("data", function(data) {
-    res.write("<h1> " + req.body.cityName + " weather is " + JSON.parse(data).weather[0].description) + "</h1>";
-    res.write("<h1> " + req.body.cityName + " temp is " + JSON.parse(data).main.temp) + "</h1>";
+  https.get(url, function(https_res) {
+      https_res.on("data", function(data) {  
+      res.write("<h1> " + cityName + " weather is " + JSON.parse(data).weather[0].description) + "</h1>";
+      res.write("<h1> " + cityName + " temp is " + JSON.parse(data).main.temp) + "</h1>";
 
-    
-    res.write('  <img src="' + "http://openweathermap.org/img/wn/" + JSON.parse(data).weather[0].icon + '.png"' + "/>");
-    res.send();
-  })
-});
+      // console.log(JSON.parse(data).weather[0].icon );
+      res.write('  <img src="' + "http://openweathermap.org/img/wn/" + JSON.parse(data).weather[0].icon + '.png"' + "/>");
+      res.send();
+    })
+  });
+
+})
 ```
 
 Notice how we use `res.write` multiple times to before calling `res.send`. Check the top answer in this [[stackoverflow post]](https://stackoverflow.com/questions/44692048/what-is-the-difference-between-res-send-and-res-write-in-express) to understand the difference between `res.write` and `res.send`. The key difference is `res.send` can be called only once where as `res.write` can be called multiple times followed by a `res.end`.
+
+
+## Handle a POST request to our server & Using the body parser
+Before continuing check and compare the status of the base code so far [placeholder]. Now, we want to enable the user to enter a city name and get alive weather data from the openwathermap API through our server. Something like this:
+
+![Get Vancouver weather](images/ezgif-3-6d0200ca1132.gif)
+
+- First, we will be changing the `app.get('/')` to return an html file instead of an html code and move the previous code in `app.get('/')` to `app.post('/')` as such:
+
+```
+
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + "/index.html");
+})
+
+app.post("/", function(req, res) {
+  // res.send("post req received" + req.body.cityName);
+  const url = "https://api.openweathermap.org/data/2.5/weather?q=" + req.body.cityName + "&units=metric&appid=" + apikey
+
+  https.get(url, function(https_res) {
+    https_res.on("data", function(data) {
+      res.write("<h1> " + req.body.cityName + " weather is " + JSON.parse(data).weather[0].description) + "</h1>";
+      res.write("<h1> " + req.body.cityName + " temp is " + JSON.parse(data).main.temp) + "</h1>";
+
+      // console.log(JSON.parse(data).weather[0].icon );
+      res.write('  <img src="' + "http://openweathermap.org/img/wn/" + JSON.parse(data).weather[0].icon + '.png"' + "/>");
+      res.send();
+    })
+  });
+
+})
+
+
+```
+Notice how we are sending now this html file back to the browser client whenever to send a GET for the root directory of our web server:
+
+```
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Live Weather Application</title>
+  </head>
+  <body>
+    <h1> Enter City Name:</h1>
+
+    <form method="post">
+
+      <label> City Name</label>
+
+      <input type="text" name="cityName" placeholder="Enter City Name">
+      <input type="submit" value="submit">
+    </form>
+
+  </body>
+</html>
+
+```
+Also, notice that we are using now `res.sendFile()` instead of `res.send()` to send a whole html file. In `index.html`, we have built a simple form for the user to enter the city of interest.
+Once the user hit button, a post request will be send to our server and will be caught by `app.post('/')`. Again, the argument `/` indicates that the post request was originated from the root/home page.
