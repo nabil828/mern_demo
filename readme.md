@@ -1,4 +1,5 @@
-MERN Demo using (MongoDB, Express.js, React.js, and Node.js)
+# MERN Demo using (MongoDB, Express.js, React.js, and Node.js)
+
 Here is a list of steps we are going through this demo:
 - [ ] [Setting up The Server](#Setting-up-the-server)
 - [ ] [Routing in Express](#Routing-in-Express)
@@ -7,7 +8,8 @@ Here is a list of steps we are going through this demo:
 - [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
 
 ---
-
+Check out the server code [here](./server/server.js) and client code [here](./client/index.js).
+---
 # Setting up The Server
 - Create a `server` directory using the command:
     `nabil828@DESKTOP-0AB0QNR:~/mern_demo$ mkdir server`. Now, Express.js is the framework that we will use to build the server. It is defined as
@@ -184,7 +186,7 @@ Here is the formatted JSON reply from the API server([[Using pretty-json package
 }
 ```
 ## GET request from our server to external server & Parsing the JSON response
-With the help [[HTTPS module]](https://nodejs.org/api/https.html#https_https_get_url_options_callback) in node js make a GET request to this API to get Vancouver weather.
+With the help [[HTTPS module]](https://nodejs.org/api/https.html#https_https_get_url_options_callback) in Node.js we will make a GET request to this API to get Vancouver weather.
 
 ```
 app.get("/", function(req, res) {
