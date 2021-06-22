@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const https = require('https');
+const mongoose = require('mongoose');
 
 const bodyparser = require("body-parser");
 app.use(bodyparser.urlencoded({
@@ -9,6 +10,16 @@ app.use(bodyparser.urlencoded({
 
 const apikey = "b660f3402c54cb9a9c48f89c35249e5c";
 
+mongoose.connect("mongodb://localhost:27017/test",
+ {useNewUrlParser: true, useUnifiedTopology: true});
+
+const citySchema = new mongoose.Schema({
+    name: String,
+    temperature: Number,
+    description: String
+});
+
+const cityModel = mongoose.model("cities", citySchema);
 
 app.listen(5000, function(err){
   if(err) console.log(err);
@@ -40,4 +51,56 @@ app.post("/", function(req, res) {
 
 app.get('/contact', function (req, res) {
   res.send('Hi there, here is my <a href="mailto:nabil@eceubc.ca"> email </a>')
+})
+
+
+
+app.get('/cities/:city_name', function(req, res) {
+  console.log("received a request for "+ req.params.city_name);
+  cityModel.find({name: req.params.city_name}, function(err, cities){
+      if (err){
+        console.log("Error " + err);
+      }else{
+        console.log("Data "+ JSON.stringify(cities));
+      }
+      res.send(JSON.stringify(cities));
+  });
+})
+
+
+
+app.get('/cities', function(req, res) {
+  cityModel.find({}, function(err, cities){
+      if (err){
+        console.log("Error " + err);
+      }else{
+        console.log("Data "+ JSON.stringify(cities));
+      }
+      res.send(JSON.stringify(cities));
+  });
+})
+
+
+app.put("/insert", function(req, res){
+  cityModel.create({
+    name : req.body.name,
+    temperature : req.body.temperature,
+    description: req.body.description
+  }, function(err, data){
+    if(err) console.log(err);
+    else
+    console.log(data);
+    res.send("All good! Inserted.")
+  });
+})
+
+app.delete("/delete/:city_name", function(req, res){
+  cityModel.remove({
+    name : req.body.name
+  }, function(err, data){
+    if(err) console.log(err);
+    else
+    console.log(data);
+    res.send("All good! Delteted.")
+  });
 })

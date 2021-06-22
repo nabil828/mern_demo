@@ -1,14 +1,10 @@
-MERN Demo using (MongoDB, Express.js, React.js, and Node.js)
+VoilàMERN Demo using (MongoDB, Express.js, React.js, and Node.js)
 Here is a list of steps we are going through this demo:
 - [ ] Setting up the server
 - [ ] Routing in Express
-- [ ] REST API
-- [ ] Mars
-- [ ] Jupiter
-- [ ] Saturn
-- [ ] Uranus
-- [ ] Neptune
-- [ ] Comet Haley
+- [ ] REST API - Round one
+- [ ] Mongo DB & REST API - Round two
+- [ ] React & REST aPI - Round three
 
 ---
 
@@ -199,12 +195,11 @@ Notice how we use `res.write` multiple times to before calling `res.send`. Check
 
 
 ## Handle a POST request to our server & Using the body parser
-Before continuing check and compare the status of the base code so far [placeholder].
+Before continuing check and compare the browse the [base code so far](https://github.com/nabil828/mern_demo/tree/d02e63cdc6fc1b06be68c682a8df3a51514d084f).
 
 Now, we want to enable the user to enter a city name and get live weather data from the openwathermap API through our server. Something like this:
 
 ![Get Vancouver weather](images/1.gif)
-
 
 - First, we will be changing the `app.get('/')` to return an html file instead of an html code and move the previous code in `app.get('/')` to `app.post('/')` as such:
 
@@ -272,6 +267,187 @@ check out [[https://www.npmjs.com/package/body-parser]](https://www.npmjs.com/pa
 - Finally, add the api key from your openweathermap account page.
 ```
 const apikey = "b660f3402c54cb9a9c48f89c35249e5c";
-
 ```
-check out thee code at this stage [placeholder].
+run `http://localhost:5000` on your server and Voila!
+[Check out the code at this stage](https://github.com/nabil828/mern_demo/tree/e67c18b706c68bb03b9ded771ae29549836ff882) .
+
+# Mongo DB
+Before talking about the other REST operations, namely PUT and DELETE, let us build a database on our server to serve such requests. Now, we want to build our own weather service and not make any calls to openwathermap.
+
+- First, let us install mongodb using our terminal
+```
+sudo apt-get install mongodb
+```  
+and run the mongodb service Using
+```
+sudo service mongodb start
+```
+and log in to the database terminal using
+```
+$ mongo
+```
+command.
+
+- Next, create and use `test` db using
+```
+use test
+```
+and create and populate `cities` collection using
+```
+> db.cities.insert([{name:'Vancouver', tempreture:25.5, description:'hot'},{name:'Tokyo', tempreture:39.5, description:'scorching'},{name:'Paris', tempreture:'19', description:'cloudy'}]);
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 3,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.cities.find().pretty();
+{
+        "_id" : ObjectId("60d15794cdf46a594de39aa2"),
+        "name" : "Vancouver",
+        "temperature" : 25.5,
+        "description" : "hot"
+}
+{
+        "_id" : ObjectId("60d15794cdf46a594de39aa3"),
+        "name" : "Tokyo",
+        "temperature" : 39.5,
+        "description" : "scorching"
+}
+{
+        "_id" : ObjectId("60d15794cdf46a594de39aa4"),
+        "name" : "Paris",
+        "temperature" : "19",
+        "description" : "cloudy"
+}
+```
+Now the database is created and running. We now need to access it through the Express server.
+
+- Install [`mongoose`](https://mongoosejs.com/docs/) module to enable us to access mongodb from the server code.
+```
+mongoose.connect("mongodb://localhost:27017/test",
+ {useNewUrlParser: true, useUnifiedTopology: true});
+const citySchema = new mongoose.Schema({
+    name: String,
+    temperature: Number,
+    description: String
+});
+const cityModel = mongoose.model("cities", citySchema);
+```
+The `mongoose.connect` function call will establish the connection to the db. The `citySchema` variabale should match the schema of your collection in the mongodb. The `cityModel` object is going to be used to help us to pass SQL queries to the db.
+
+- Now moving to the fun part. Let us add these *routes* in the server code to match, a GET(retrieve all), GET(retrieve one), POST(insert one), PUT(update one), & DELETE(delete all/one) requests.  
+
+Something along these lines:
+```
+app.use(bodyParser.json());
+
+app.get('/cities', (req, res) => {
+  const articles = [];
+  // code to retrieve all cities...
+  res.json(articles);
+});
+
+app.post('/cities', (req, res) => {
+  // code to add a new city...
+  res.json(req.body);
+});
+
+app.put('/cities/:name', (req, res) => {
+  const { name } = req.params;
+  // code to update an article...
+  res.json(req.body);
+});
+
+app.delete('/articles/:name', (req, res) => {
+  const { name } = req.params;
+  // code to delete an article...
+  res.json({ deleted: id });
+});
+```
+Note how these REST API calls will match the SELECT, INSERT, UPDATE, & DELETE statements. Also, notice how do we retrieve the city name from URL route using the `req.params` [[Source]](https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/).
+
+Here is the routes I implemented:
+```
+app.get('/cities/:city_name', function(req, res) {
+  console.log("received a request for "+ req.params.city_name);
+  cityModel.find({name: req.params.city_name}, function(err, cities){
+      if (err){
+        console.log("Error " + err);
+      }else{
+        console.log("Data "+ JSON.stringify(cities));
+      }
+      res.send(JSON.stringify(cities));
+  });
+})
+app.get('/cities', function(req, res) {
+  cityModel.find({}, function(err, cities){
+      if (err){
+        console.log("Error " + err);
+      }else{
+        console.log("Data "+ JSON.stringify(cities));
+      }
+      res.send(JSON.stringify(cities));
+  });
+})
+app.post("/insert", function(req, res){
+  cityModel.create({
+    name : req.body.name,
+    temperature : req.body.temperature,
+    condition: req.body.condition
+  }, function(err, openweathermap){
+    if(err) console.log(err);
+    else
+    console.log(openweathermap);
+  });
+})
+```
+
+This will enable the client for example to list all cities and browse a city by its name:
+![select(all) and select(one)](images/2.gif)
+
+- To save time of building front end HTML forms to trigger `app.put("/insert")` & `app.delete("/delete")` create matching the following routes:
+```
+app.put("/insert", function(req, res){
+  cityModel.create({
+    name : req.body.name,
+    temperature : req.body.temperature,
+    description: req.body.description
+  }, function(err, data){
+    if(err) console.log(err);
+    else
+    console.log(data);
+    res.send("All good! Inserted.")
+  });
+})
+app.delete("/delete/:city_name", function(req, res){
+  cityModel.remove({
+    name : req.body.name
+  }, function(err, data){
+    if(err) console.log(err);
+    else
+    console.log(data);
+    res.send("All good! Delteted.")
+  });
+})
+```
+, we will use a tool called [[Postman]](https://www.postman.com/) to simulate these requests. In the following gif, I am inserting a new city and deleting it using the API.
+![insert delete](images/3.gif)
+
+# React
+Now our server is ready to serve but what about our client. so far we had been testing the server by mostly entering the routes dirctly in the browser for GET requests and using Postman for the rest.
+
+We will create a complete client interface using [React.js](https://reactjs.org/) to get somewhat the following:
+![react demo](images/4.gif)
+by clicking on these two react links, each city weather is going to be loaded into the page without the page getting reloaded. All the magic will happen in the background. React will contact the Express server and retrieve the weather of the selected city.
+
+- [[Source]](https://reactjs.org/docs/create-a-new-react-app.html) First, we need to create another directory by executing the following:
+```
+npx create-react-app client
+cd client
+npm start
+```
