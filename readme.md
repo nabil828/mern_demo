@@ -459,6 +459,7 @@ app.delete("/delete/:city_name", function(req, res){
 })
 ```
 , we will use a tool called [[Postman]](https://www.postman.com/) to simulate these requests. In the following gif, I am inserting a new city and deleting it using the API.
+
 ![insert delete](images/3.gif)
 Check the status of the [code](https://github.com/nabil828/mern_demo/tree/b24a6704d141f6c7fb72dd03f5efee3e58f6e133) at this stage.
 ---
