@@ -98,15 +98,18 @@ app.get('/', function (req, res) {
 })
 ```
 The first argument is the relative path to server homepage.
-The second argument is a call function the will hold the `req` variable for the request object. And the `res` variable for the response object. we use the method `res.send()` to send a message back to the client:
+The second argument is a call function the will hold the `req` variable for the request object. And the `res` variable for the response object. We use the method `res.send()` to send a message back to the client:
+
 ![server sending welcome message](images/2.jpg)  
 You may even embed HTML in your response's string.
+
 ---
 - [x] [Setting up The Server](#Setting-up-the-server)
 - [ ] [Routing in Express](#Routing-in-Express)
 - [ ] [REST API - Round One](#REST-API---Round-One)
 - [ ] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
 - [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
+---
 # Routing in Express
 So far we had one route to our server. Namely, the '/' route. If we want clients to visit other ~~pages~~ routes, we can handle these requests in such a way:
 ```
