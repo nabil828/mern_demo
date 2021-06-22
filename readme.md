@@ -100,7 +100,12 @@ The first argument is the relative path to server homepage.
 The second arument is a call function the will hold the `req` variable for the request object. And the `res` variable for the response object. we use the method `res.send()` to send a message back to the client:
 ![server sending welcome message](images/2.jpg)  
 You may even embed HTML in your response's string.
-
+---
+- [x] [Setting up The Server](#Setting-up-the-server)
+- [ ] [Routing in Express](#Routing-in-Express)
+- [ ] [REST API - Round One](#REST-API---Round-One)
+- [ ] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
+- [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
 # Routing in Express
 So far we had one route to our server. Namely, the '/' route. If we want clients to visit other ~~pages~~ routes, we can handle these requests in such a way:
 ```
@@ -110,6 +115,12 @@ app.get('/contact', function (req, res) {
 ```
 Output:
 ![server replying to another route](images/3.jpg)  
+---
+- [x] [Setting up The Server](#Setting-up-the-server)
+- [x] [Routing in Express](#Routing-in-Express)
+- [x] [REST API - Round One](#REST-API---Round-One)
+- [ ] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
+- [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
 
 # REST API - Round One
 > [[Source]](https://rapidapi.com/blog/most-popular-api/) API stands for Application Programming Interface and allows your application to interact with an external service using a simple set of commands.
@@ -270,7 +281,14 @@ const apikey = "b660f3402c54cb9a9c48f89c35249e5c";
 ```
 run `http://localhost:5000` on your server and Voila!
 [Check out the code at this stage](https://github.com/nabil828/mern_demo/tree/e67c18b706c68bb03b9ded771ae29549836ff882) .
+
 ---
+- [x] [Setting up The Server](#Setting-up-the-server)
+- [x] [Routing in Express](#Routing-in-Express)
+- [x] [REST API - Round One](#REST-API---Round-One)
+- [ ] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
+- [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
+
 # MongoDB and REST API - Round two
 Before talking about the other REST operations, namely PUT and DELETE, let us build a database on our server to serve such requests. Now, we want to build our own weather service and not make any calls to openwathermap.
 
@@ -439,6 +457,12 @@ app.delete("/delete/:city_name", function(req, res){
 ![insert delete](images/3.gif)
 Check the status of the [code](https://github.com/nabil828/mern_demo/tree/b24a6704d141f6c7fb72dd03f5efee3e58f6e133) at this stage.
 ---
+- [x] [Setting up The Server](#Setting-up-the-server)
+- [x] [Routing in Express](#Routing-in-Express)
+- [x] [REST API - Round One](#REST-API---Round-One)
+- [x] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
+- [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
+
 # React and REST API - Round three
 Now our server is ready to serve but what about our client. so far we had been testing the server by mostly entering the routes dirctly in the browser for GET requests and using Postman for the rest.
 
