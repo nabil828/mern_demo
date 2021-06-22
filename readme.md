@@ -461,6 +461,7 @@ app.delete("/delete/:city_name", function(req, res){
 , we will use a tool called [[Postman]](https://www.postman.com/) to simulate these requests. In the following gif, I am inserting a new city and deleting it using the API.
 
 ![insert delete](images/3.gif)
+
 Check the status of the [code](https://github.com/nabil828/mern_demo/tree/b24a6704d141f6c7fb72dd03f5efee3e58f6e133) at this stage.
 ---
 - [x] [Setting up The Server](#Setting-up-the-server)
@@ -470,9 +471,9 @@ Check the status of the [code](https://github.com/nabil828/mern_demo/tree/b24a67
 - [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
 
 # React and REST API - Round Three
-Now our server is ready to serve but what about our client. so far we had been testing the server by mostly entering the routes dirctly in the browser for GET requests and using Postman for the rest.
+Now our server is ready to serve but what about our client. so far we had been testing the server by mostly entering the routes directly in the browser for GET requests and using Postman for the PUT & DELETE.
 
-We will create a complete client interface using [React.js](https://reactjs.org/) to get somewhat the following:
+We will create a simple client interface using [React.js](https://reactjs.org/) to get client like the following:
 ![react demo](images/4.gif)
 by clicking on these two react links, each city weather is going to be loaded into the page without the page getting reloaded. All the magic will happen in the background. React will contact the Express server and retrieve the weather of the selected city.
 
