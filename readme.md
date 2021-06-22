@@ -474,7 +474,9 @@ Check the status of the [code](https://github.com/nabil828/mern_demo/tree/b24a67
 Now our server is ready to serve but what about our client. so far we had been testing the server by mostly entering the routes directly in the browser for GET requests and using Postman for the PUT & DELETE.
 
 We will create a simple client interface using [React.js](https://reactjs.org/) to get client like the following:
+
 ![react demo](images/4.gif)
+
 by clicking on these two react links, each city weather is going to be loaded into the page without the page getting reloaded. All the magic will happen in the background. React will contact the Express server and retrieve the weather of the selected city.
 
 - [[Source]](https://reactjs.org/docs/create-a-new-react-app.html) First, we need to create another directory by executing the following:
@@ -631,7 +633,7 @@ nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ tree ./public -L 1
 0 directories, 6 files
 nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$
 ```
-All the magic start with index.js in the `src` directory. I will open the `client` in atom and delete all the files except `index.js` and `index.html`:
+The action starts with `index.js` in the `src` directory. I will open the `client` in atom and delete all the files except `index.js` and `index.html`:
 
 ```
 nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ ls
