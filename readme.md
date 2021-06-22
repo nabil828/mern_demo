@@ -432,7 +432,8 @@ app.post("/insert", function(req, res){
 This will enable the client for example to list all cities and browse a city by its name:
 ![select(all) and select(one)](images/2.gif)
 
-- To save time of building front end HTML forms to trigger `app.put("/insert")` & `app.delete("/delete")` create matching the following routes:
+- To save time in building front-end HTML forms to trigger `app.put("/insert")` & `app.delete("/delete")` to matching the following routes:
+
 ```
 app.put("/insert", function(req, res){
   cityModel.create({
