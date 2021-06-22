@@ -199,14 +199,16 @@ Notice how we use `res.write` multiple times to before calling `res.send`. Check
 
 
 ## Handle a POST request to our server & Using the body parser
-Before continuing check and compare the status of the base code so far [placeholder]. Now, we want to enable the user to enter a city name and get alive weather data from the openwathermap API through our server. Something like this:
+Before continuing check and compare the status of the base code so far [placeholder].
 
-![Get Vancouver weather](images/ezgif-3-6d0200ca1132.gif)
+Now, we want to enable the user to enter a city name and get live weather data from the openwathermap API through our server. Something like this:
+
+![Get Vancouver weather](images/1.gif)
+
 
 - First, we will be changing the `app.get('/')` to return an html file instead of an html code and move the previous code in `app.get('/')` to `app.post('/')` as such:
 
 ```
-
 app.get('/', function(req, res) {
   res.sendFile(__dirname + "/index.html");
 })
@@ -230,7 +232,7 @@ app.post("/", function(req, res) {
 
 
 ```
-Notice how we are sending now this html file back to the browser client whenever to send a GET for the root directory of our web server:
+Notice how we are sending now `index.html` file back to the browser client whenever to send a GET for the root directory of our web server. Here is the content of `index.html`:
 
 ```
 <!DOCTYPE html>
@@ -256,3 +258,20 @@ Notice how we are sending now this html file back to the browser client whenever
 ```
 Also, notice that we are using now `res.sendFile()` instead of `res.send()` to send a whole html file. In `index.html`, we have built a simple form for the user to enter the city of interest.
 Once the user hit button, a post request will be send to our server and will be caught by `app.post('/')`. Again, the argument `/` indicates that the post request was originated from the root/home page.
+
+- Next, we need to parse the POST request using `body-parser` module. It allows use to use the property `req.body` to get the entered city name.
+copy the next lines at the begining of `server.js`:
+```
+const bodyparser = require("body-parser");
+app.use(bodyparser.urlencoded({
+  extended: true
+}));
+```
+check out [[https://www.npmjs.com/package/body-parser]](https://www.npmjs.com/package/body-parser) for full documentation of this module/middleware.
+
+- Finally, add the api key from your openweathermap account page.
+```
+const apikey = "b660f3402c54cb9a9c48f89c35249e5c";
+
+```
+check out thee code at this stage [placeholder].
