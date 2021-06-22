@@ -125,7 +125,7 @@ Output:
 - [x] [REST API - Round One](#REST-API---Round-One)
 - [ ] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
 - [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
-
+---
 # REST API - Round One
 > [[Source]](https://rapidapi.com/blog/most-popular-api/) API stands for Application Programming Interface and allows your application to interact with an external service using a simple set of commands.
 
@@ -292,7 +292,7 @@ run `http://localhost:5000` on your server and Voila!
 - [x] [REST API - Round One](#REST-API---Round-One)
 - [ ] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
 - [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
-
+---
 # MongoDB and REST API - Round Two
 Before talking about the other REST operations, namely PUT and DELETE, let us build a database on our server to serve such requests. Now, we want to build our own weather service and not make any calls to openwathermap.
 
@@ -469,7 +469,7 @@ Check the status of the [code](https://github.com/nabil828/mern_demo/tree/b24a67
 - [x] [REST API - Round One](#REST-API---Round-One)
 - [x] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
 - [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
-
+---
 # React and REST API - Round Three
 Now our server is ready to serve but what about our client. so far we had been testing the server by mostly entering the routes directly in the browser for GET requests and using Postman for the PUT & DELETE.
 
@@ -818,8 +818,13 @@ Let us break this code down:
      Here, to `fetch` the server every time the user call the `Card` component passing different `props` argument [TL;DR](https://stackoverflow.com/a/55481525/2452907).  
 
 Mmm.. and that is it I guess. Please let me know if you have any question!
-
-
+---
+- [x] [Setting up The Server](#Setting-up-the-server)
+- [x] [Routing in Express](#Routing-in-Express)
+- [x] [REST API - Round One](#REST-API---Round-One)
+- [x] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
+- [x] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
+---
 Thx,
 <br/>
 Nabil
