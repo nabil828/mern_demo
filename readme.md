@@ -1,4 +1,4 @@
-VoilàMERN Demo using (MongoDB, Express.js, React.js, and Node.js)
+MERN Demo using (MongoDB, Express.js, React.js, and Node.js)
 Here is a list of steps we are going through this demo:
 - [ ] [Setting up The Server](#Setting-up-the-server)
 - [ ] [Routing in Express](#Routing-in-Express)
@@ -9,7 +9,7 @@ Here is a list of steps we are going through this demo:
 ---
 
 # Setting up The Server
-- Create a `server` folder using the command:
+- Create a `server` directory using the command:
     `nabil828@DESKTOP-0AB0QNR:~/mern_demo$ mkdir server`. Now, Express.js is the framework that we will use to build the server. It is defined as
   >Fast, unopinionated, minimalist web framework for Node.js
 
@@ -83,21 +83,22 @@ app.listen(5000, function(err){
 ```
 
 - start the server by typing `$node server.js`
-**OR** even better, use `$nodemon server.js` to keep the server running while you are making edits. To install, run `npm install -g nodemon`.
+**OR** even better, use `$nodemon server.js` to keep the server running while you are making edits. To install [`nodemon`](https://www.npmjs.com/package/nodemon), run `npm install -g nodemon`.
 
 - Test the server by visiting `http://localhost:5000` in your browser.
 You should get the following output:
 ![server running](images/1.jpg)  
-We will fix the server to accept get request soon 😉.
+We will fix the server to accept GET request soon 😉.
 
 - You may now add a handle for GET requests:
+
 ```
 app.get('/', function (req, res) {
   res.send('GET request to homepage')
 })
 ```
 The first argument is the relative path to server homepage.
-The second arument is a call function the will hold the `req` variable for the request object. And the `res` variable for the response object. we use the method `res.send()` to send a message back to the client:
+The second argument is a call function the will hold the `req` variable for the request object. And the `res` variable for the response object. we use the method `res.send()` to send a message back to the client:
 ![server sending welcome message](images/2.jpg)  
 You may even embed HTML in your response's string.
 ---
@@ -180,7 +181,7 @@ Here is the formatted JSON reply from the API server([[Using pretty-json package
 }
 ```
 ## GET request from our server to external server & Parsing the JSON response
-With the help [[HTTPS module]](https://nodejs.org/api/https.html#https_https_get_url_options_callback) in node js make a get request to this API to get Vancouver weather.
+With the help [[HTTPS module]](https://nodejs.org/api/https.html#https_https_get_url_options_callback) in node js make a GET request to this API to get Vancouver weather.
 
 ```
 app.get("/", function(req, res) {
@@ -263,7 +264,7 @@ Notice how we are sending now `index.html` file back to the browser client whene
 
 ```
 Also, notice that we are using now `res.sendFile()` instead of `res.send()` to send a whole html file. In `index.html`, we have built a simple form for the user to enter the city of interest.
-Once the user hit button, a post request will be send to our server and will be caught by `app.post('/')`. Again, the argument `/` indicates that the post request was originated from the root/home page.
+Once the user hit button, a POST request will be send to our server and will be caught by `app.post('/')`. Again, the argument `/` indicates that the POST request was originated from the root/home page.
 
 - Next, we need to parse the POST request using `body-parser` module. It allows use to use the property `req.body` to get the entered city name.
 copy the next lines at the begining of `server.js`:
@@ -814,7 +815,7 @@ Let us break this code down:
   code which will handle client routes to the paths `/Vancouver` & `/Tokyo` by *again* calling another component named `Card` and passing the city names using an argument called `props`.
 
   - `Card()` is the function that will return the HTML of the `Card` component. Here we want to list the city name, temperature, and description of the city's weather.
-    - First, we are using [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to construct an HTTP get request to our server and pass the city name that we are interested in. You may use it for any other REST request like POST, PUT, or DELETE.
+    - First, we are using [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to construct an HTTP GET request to our server and pass the city name that we are interested in. You may use it for any other REST request like POST, PUT, or DELETE.
     - If you are asking your self: how would the `fetch()` method find the IP address and the port number of the server, then you are asking the right question. Because it can not with us directing it to it by add this line the `package.json` file just before the dependencies `"proxy" : "http://localhost:5000/",`
     - Second, we are using `useState` Hook to pass the response from the server to the HTML code (Aka maintaining state).
     - Third, we use `useEffect` Hook is used to execute functions after a component gets rendered to “perform side effects”.
