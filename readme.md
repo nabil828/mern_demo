@@ -633,7 +633,7 @@ nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ tree ./public -L 1
 0 directories, 6 files
 nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$
 ```
-The action starts with `index.js` in the `src` directory. I will open the `client` in atom and delete all the files except `index.js` and `index.html`:
+The action starts with `index.js` in the `src` directory. I will open the `client` directory in atom and delete all the files except `index.js` and `index.html`:
 
 ```
 nabil828@DESKTOP-0AB0QNR:~/mern_demo/client$ ls
@@ -679,20 +679,9 @@ Alright, so we are left with `src/index.js`& `public/index.html`
 ```
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 
-ReactDOM.render(
-    <App />
-    ,
-    document.getElementById('root')
-);
-```
 
-In this snippet of code, we are calling `ReactDOM.render` which takes two arguments; what to render and where to render.
-For example, if we had:
 
-```
 ReactDOM.render(
     <ol>
       <li> Apple </li>
@@ -702,7 +691,9 @@ ReactDOM.render(
     document.getElementById('root')
 );
 ```
-Then we will be rendering an ordered list inside a an HTML element with an ID equal to `root`. If you check `public/index.html`, you will see that it is a dive element inside the body html element:
+
+In this snippet of code, we are calling `ReactDOM.render` which takes two arguments; what to render and where to render.
+This code we will render an ordered list inside an HTML element with an ID equal to `root`. If you check `public/index.html`, you will see that it is a `div` element inside the body html element with the id `root`:
 
 ```
   <div id="root"></div>
@@ -795,18 +786,16 @@ ReactDom.render(
   </BrowserRouter>
   , document.getElementById("root"));
 ```
-And that is it!
+This is it!
 Let us break this code down:
  - First, notice in `index.js` how we surrounded the `App` tag with `BrwoserRouter` tag.
  `BrwoserRouter` indicates that you plan to use react routes in your client. Check [react-router-dom](https://reactrouter.com/web/guides/quick-start) and install it in the `client` directory. This will allow us, for example
  to select and load the weather for different cities.
- - As for the `App` tag it self, notice how the letter A is capital. This is not an HTML tag. It is a special React.js tag
+ - As for the `App` tag itself, notice how the letter A is in capital case. This is not an ordinary HTML tag. It is a special React.js tag
  called a *component*. Think about the user interface (UI) as a group of independent components.
  - Now we choose to write the code of the `App` component in a separate file but it is not a must.
  - In the `App.js` file we have two functions
-  - `App()` is the function that gonna return the HTML code the that would replace the `App` tag. We can that first we build a simple navigation list with a special tag called `Link` instead of the usual `a` in HTML. This `Link` tag will allow us to make AJAX requests
-  to the server.
-
+  - `App()` is the function that going to return the HTML code the that would replace the `App` tag. We can that first we build a simple navigation list with a special tag called `Link` instead of the usual `a` in HTML. This `Link` tag will allow us to make AJAX requests to update the page without reloading it. Hence a finer and faster rendering! Here is navigation page build inside the `App` component:
   ```
   Select a city:
   <ul>
@@ -815,7 +804,6 @@ Let us break this code down:
   </ul>
   ```
   Next, we have the
-
   ```
   <Switch>
   <Route>
