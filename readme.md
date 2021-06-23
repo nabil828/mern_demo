@@ -829,7 +829,7 @@ More Sources: [1](http://forum.espruino.com/conversations/1364/)
 *Props* let you split the UI into independent, reusable pieces, and think about each piece in isolation.
 <details><summary>Answer</summary>
 
-FALSE, this is the definition of Components. Read more about Components and props [here](https://reactjs.org/docs/components-and-props.html).
+FALSE, this is the definition of Components. Read more about components and props [here](https://reactjs.org/docs/components-and-props.html).
 
 </details>
 
