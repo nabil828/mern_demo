@@ -275,7 +275,7 @@ Notice how we are sending now `index.html` file back to the browser client whene
 Also, notice that we are using now `res.sendFile()` instead of `res.send()` to send a whole html file. In `index.html`, we have built a simple form for the user to enter the city of interest.
 Once the user hit button, a POST request will be send to our server and will be caught by `app.post('/')`. Again, the argument `/` indicates that the POST request was originated from the root/home page.
 
-- Next, we need to parse the POST request using `body-parser` module. It allows us to use the property `req.body` to get the entered city name.
+- Next, we need to parse the POST request using [`body-parser`](https://www.npmjs.com/package/body-parser) module. It allows us to use the property `req.body` to get the entered city name.
 copy the next lines at the begining of `server.js`:
 ```
 const bodyparser = require("body-parser");
@@ -812,7 +812,7 @@ Let us break this code down:
      Here, to `fetch` the server every time the user call the `Card` component passing different `props` argument [TL;DR](https://stackoverflow.com/a/55481525/2452907).  
 
 Mmm.. and that is it I guess. Please let me know if you have any question!
-
+More Sources: [1](http://forum.espruino.com/conversations/1364/)
 ---
 - [x] [Setting up The Server](#Setting-up-the-server)
 - [x] [Routing in Express](#Routing-in-Express)
