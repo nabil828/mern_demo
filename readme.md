@@ -703,7 +703,7 @@ So that is it. We now have a simple, clean, & working React client:
 - Create `App.js` file and have this code copied inside it:
 
 ```
-import {Route,Switch, Link} from "react-router-dom"
+import {Route,Switch, BrowserRouter, Link} from "react-router-dom"
 import {useState, useEffect} from 'react'
 
 function Heading(){
@@ -824,16 +824,16 @@ More Sources: [1](http://forum.espruino.com/conversations/1364/)
 - [x] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
 - [x] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
 ---
-## Check Your understanding
+## Check Your Understanding
 
 *Props* let you split the UI into independent, reusable pieces, and think about each piece in isolation.
 <details><summary>Answer</summary>
 
-FALSE, this is the definition of Components. Read more about Components and props from [here](https://reactjs.org/docs/components-and-props.html).
+FALSE, this is the definition of Components. Read more about Components and props [here](https://reactjs.org/docs/components-and-props.html).
 
 </details>
 
- 
+
 
 Thanks,
 <br/>
