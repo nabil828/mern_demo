@@ -1,4 +1,4 @@
-# MERN Demo using (MongoDB, Express.js, React.js, and Node.js)
+# MERN Demo (MongoDB, Express.js, React.js, and Node.js)
 
 Here is a list of steps we are going through this demo:
 - [ ] [Setting up The Server](#Setting-up-the-server)
@@ -124,7 +124,7 @@ Output:
 ---
 - [x] [Setting up The Server](#Setting-up-the-server)
 - [x] [Routing in Express](#Routing-in-Express)
-- [x] [REST API - Round One](#REST-API---Round-One)
+- [ ] [REST API - Round One](#REST-API---Round-One)
 - [ ] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
 - [ ] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
 ---
