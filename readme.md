@@ -824,7 +824,8 @@ More Sources: [1](http://forum.espruino.com/conversations/1364/)
 - [x] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
 - [x] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
 ---
-Check Your understanding
+## Check Your understanding
+
 *Props* let you split the UI into independent, reusable pieces, and think about each piece in isolation.
 <details><summary>Answer</summary>
 <p>
