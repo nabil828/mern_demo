@@ -820,6 +820,6 @@ More Sources: [1](http://forum.espruino.com/conversations/1364/)
 - [x] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
 - [x] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
 ---
-Thx,
+Thanks,
 <br/>
 Nabil
