@@ -131,7 +131,7 @@ Output:
 # REST API - Round One
 > [[Source]](https://rapidapi.com/blog/most-popular-api/) API stands for Application Programming Interface and allows your application to interact with an external service using a simple set of commands.
 
-out of 10,000 APIs out there in the wild, we will be interacting with the [[openweathermap]](https://openweathermap.org/api) API to get weather and weather forecasts for multiple cities. Our Express server will act as client in this interaction.
+out of 10,000 APIs out there in the wild, we will be interacting with the [[openweathermap]](https://openweathermap.org/api) API to get weather and weather forecasts for multiple cities. Our Express server will act as client in this interaction. [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) stands for Representational state transfer which is an architectural stateless style to make designing web apps more scalable and secure.  
 - Create a free account on [[openwathermap]](https://openweathermap.org/price) website.
 - [[API call guide]](https://openweathermap.org/current) Using your API key, test an API call by pasting this link into the browser, replacing the API key with yours:
 ```
@@ -189,6 +189,8 @@ Here is the formatted JSON reply from the API server([[Using pretty-json package
 With the help [[HTTPS module]](https://nodejs.org/api/https.html#https_https_get_url_options_callback) in Node.js we will make a GET request to this API to get Vancouver weather.
 
 ```
+const https = require('https');
+
 app.get("/", function(req, res) {
   var cityName = 'Vancouver';
   var apikey = "b660f3402c54cb9a9c48f89c35249e5c"
@@ -353,6 +355,8 @@ Now the database is created and running. We now need to access it through the Ex
 
 - Install [`mongoose`](https://mongoosejs.com/docs/) module to enable us to access mongodb from the server code.
 ```
+const mongoose = require('mongoose');
+
 mongoose.connect("mongodb://localhost:27017/test",
  {useNewUrlParser: true, useUnifiedTopology: true});
 const citySchema = new mongoose.Schema({
@@ -416,17 +420,6 @@ app.get('/cities', function(req, res) {
         console.log("Data "+ JSON.stringify(cities));
       }
       res.send(JSON.stringify(cities));
-  });
-})
-app.post("/insert", function(req, res){
-  cityModel.create({
-    name : req.body.name,
-    temperature : req.body.temperature,
-    condition: req.body.condition
-  }, function(err, openweathermap){
-    if(err) console.log(err);
-    else
-    console.log(openweathermap);
   });
 })
 ```
@@ -708,10 +701,7 @@ So that is it. We now have a simple, clean, & working React client:
 - Create `App.js` file and have this code copied inside it:
 
 ```
-import Heading from "./Heading.js"
-// import Rest from "./Rest.js"
 import {Route,Switch, Link} from "react-router-dom"
-import './App.css';
 import {useState, useEffect} from 'react'
 
 
@@ -756,13 +746,13 @@ function App() {
         <Route
           path="/Vancouver"
           render={(props) => (
-             <Card name='Vancouver' temperature="25.6" description="sunny"/>
+             <Card name='Vancouver'/>
            )}
         />
         <Route
           path="/Tokyo"
           render={(props) => (
-             <Card name='Tokyo' temperature="30.6" description="scorching"/>
+             <Card name='Tokyo'/>
            )}
         />
 
