@@ -119,7 +119,9 @@ app.get('/contact', function (req, res) {
   res.send('Hi there, here is my <a href="mailto:nabil@eceubc.ca"> email </a>.')
 })
 ```
+
 Output:
+
 ![server replying to another route](images/3.jpg)  
 ---
 - [x] [Setting up The Server](#Setting-up-the-server)
