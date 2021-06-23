@@ -706,6 +706,9 @@ So that is it. We now have a simple, clean, & working React client:
 import {Route,Switch, Link} from "react-router-dom"
 import {useState, useEffect} from 'react'
 
+function Heading(){
+  return (<h1> Weather webservice </h1>);
+}
 
 function Card(props){
   const [city, setCity] = useState(null);
@@ -821,6 +824,16 @@ More Sources: [1](http://forum.espruino.com/conversations/1364/)
 - [x] [MongoDB and REST API - Round Two](#MongoDB-and-REST-API---Round-Two)
 - [x] [React and REST API - Round Three](#React-and-REST-API---Round-Three)
 ---
+Check Your understanding
+*Props* let you split the UI into independent, reusable pieces, and think about each piece in isolation.
+<details><summary>Answer</summary>
+<p>
+FALSE, this is the definition of Components. Read more about Components and props from [here](https://reactjs.org/docs/components-and-props.html).
+</p>
+</details>
+
+
+
 Thanks,
 <br/>
 Nabil
