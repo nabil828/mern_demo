@@ -814,6 +814,7 @@ Let us break this code down:
      Here, to `fetch` the server every time the user call the `Card` component passing different `props` argument [TL;DR](https://stackoverflow.com/a/55481525/2452907).  
 
 Mmm.. and that is it I guess. Please let me know if you have any questions!
+<br>
 More Sources: [1](http://forum.espruino.com/conversations/1364/)
 
 ---
