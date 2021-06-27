@@ -809,7 +809,7 @@ Let us break this code down:
   - `Card()` is the function that will return the HTML of the `Card` component. Here we want to list the city name, temperature, and description of the city's weather.
     - First, we are using [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to construct an HTTP GET request to our server and pass the city name that we are interested in. You may use it for any other REST request like POST, PUT, or DELETE.
     - If you are asking your self: how would the `fetch()` method find the IP address and the port number of the server, then you are asking the right question. Because it can not communicate with the server without us directing clint to address of the server by add this line the `package.json` file just before the dependencies `"proxy" : "http://localhost:5000/",`
-    - Second, we are using `useState` Hook to pass the response from the server to the HTML code (Aka maintaining state) [Source](https://reactjs.org/docs/hooks-intro.html).
+    - Second, we are using `useState` Hook to pass the response from the server to the HTML code (Aka maintaining state) [[Source]](https://reactjs.org/docs/hooks-intro.html).
     - Third, we use `useEffect` Hook is used to execute functions after a component gets rendered to “perform side effects”.
      Here, to `fetch` the server every time the user call the `Card` component passing different `props` argument [TL;DR](https://stackoverflow.com/a/55481525/2452907).  
 
