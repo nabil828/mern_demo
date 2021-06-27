@@ -401,7 +401,7 @@ app.delete('/articles/:name', (req, res) => {
 ```
 Note how these REST API calls will match the SELECT, INSERT, UPDATE, & DELETE statements. Also, notice how do we retrieve the city name from URL route using the `req.params` [[Source]](https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/).
 
-Here is the routes I implemented:
+Here are the routes I implemented:
 ```
 app.get('/cities/:city_name', function(req, res) {
   console.log("received a request for "+ req.params.city_name);
@@ -458,7 +458,6 @@ app.delete("/delete/:city_name", function(req, res){
 , we will use a tool called [[Postman]](https://www.postman.com/) to simulate these requests. In the following gif, I am inserting a new city and deleting it using the API.
 
 ![insert delete](images/3.gif)
-
 Check the status of the [code](https://github.com/nabil828/mern_demo/tree/b24a6704d141f6c7fb72dd03f5efee3e58f6e133) at this stage.
 ---
 - [x] [Setting up The Server](#Setting-up-the-server)
