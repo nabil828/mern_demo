@@ -1,4 +1,4 @@
-# MERN Demo (MongoDB, Express.js, React.js, and Node.js)
+# MERN Demo (MongoDB, Express.js, React.js, and Node.js) 
 
 Here is a list of steps we are going through this demo:
 - [ ] [Setting up The Server](#Setting-up-the-server)
